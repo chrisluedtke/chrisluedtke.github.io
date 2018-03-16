@@ -59,7 +59,7 @@
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="post-heading">
-              <h1>Down in the Weeds</h1>
+              <h1>Into the Weeds</h1>
               <h2 class="subheading">ChiPy Mentorship Blog 2 of 3</h2>
               <span class="meta">March 15, 2018</span>
             </div>
@@ -73,10 +73,40 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
+<h4>Ongoing Learning and Project Clarity</h4>
+<p>Since Post 1, my time investment in this project has varied between learning data science at a high level and expanding my Python foundation through tutorials and project work. I have been working my way through the book, Data Science for Business, which nicely balances emphasis between high level discussion and gritty nuance. Importantly, the text provides language for speaking to my interests and experiences in analytics and defining my project stages and scope.</p>
+<p>The analysis I’m conducting involves profiling and causal modeling. I want to know which data points correlate most strongly to student outcomes and AmeriCorps Member performance (see my previous post for information on my role at an educational non-profit). I am hoping I can then build a profile of successful AmeriCorps Members (ACMs) and use this model to recommend metrics and goals that better align to student outcomes and ACM performance. Additionally, this analysis could help advocate to school partners for the school settings in which our AmeriCorps Members best serve students’ individualistic needs.</p>
+<p>On the technical Python side, I have gained further experience with tuples, dictionaries, sets, and <code>with</code> control flows while also practicing other basic types and pandas techniques I already knew well. The tutorials I followed include an  <a href='https://github.com/cmawer/pycon-2017-eda-tutorial'>Exploratory Data Analysis</a> from PyCon, the <a href='https://seaborn.pydata.org/tutorial.html'>seaborn data visualization tutorial</a>, and a little <a href='http://textblob.readthedocs.io/en/dev/'>natural language processing</a>.</p>
+<p>Although these tutorials provided a sense of potential and accomplishment, the feeling quickly faded in the absence of application. Of course, this is where the 'hard learning' occurs and meaningful progress is made. Following are two examples of the data I have processed in my project to date.</p>
 
-<p>Coming Soon!</p>
+<h4>Getting Data</h4>
+<p>First I needed to get my data into Python. Most of of my data are stored on Salesforce or Excel workbooks through SharePoint.</p>
+Going into this project, I had already developed Python systems for getting and writing Excel documents to SharePoint. This was accomplished with a mapped network drive to the SharePoint server, allowing me to simply reference and navigate the file structure as a local drive.
+<p>The Salesforce component was a bit more tricky, but with a little Python elbow grease, the <code>simple-salesforce</code> package was more than enough. This package allows me to query, create, and delete records, which has had a profound effect on my work practices. In a typical use of simple-salesforce, the user passes a traditional SOQL query into the Salesforce instance (in this case <code>cysh</code>) and performs the <code>query_all</code> function.</p>
+<p>Here is the set-up:</p>
+<iframe src="codeshare/chiPy2_1.html" width="100%" height="280" scrolling="yes" frameBorder="0"></iframe>
+<p>And a simple query of assessment records, for example:</p>
+<iframe src="codeshare/chiPy2_2.html" width="100%" height="325" scrolling="yes" frameBorder="0"></iframe>
+<p>In my case, I'm working with datasets that are not very large. In the Chicago region, we serve fewer than 3000 students and enlist fewer than 300 AmeriCorps Members. Therefore I can query the entire Salesforce object (i.e. <code>Assesment__c</code>) with whatever fields I'm interested in and perform all the shaping and filtering in Python.</p>
+<p>I added this convenient function to iterate over the query response and shape it as a dataframe:</p>
+<iframe src="codeshare/chiPy2_3.html" width="100%" height="435" scrolling="yes" frameBorder="0"></iframe>
+<p>Usage of this function:</p>
+<iframe src="codeshare/chiPy2_4.html" width="100%" height="300" scrolling="yes" frameBorder="0"></iframe>
+<p>In terms of assessment data, the next step will be determining student assessment progress by comparing prior year or start of year assessments to the recent winter assessment. Typically we calculate assessment goals from fall to spring, but in this analysis I need to calculate fall to winter goals. Ideally this analysis will also consider data from past years, but that may be an unreasonable lift. To view my current progress on assessment data, head over to the IPython notebook in my CityYear-ACM-Analysis repo.</p>
 
-	    <hr>
+<h4>Cleaning Data</h4>
+<p>In my organization we employ four coaches who observe, provide feedback, and enter data for each AmeriCorps member at least once per month. If this data were cleaned and rolled together, I could determine whether the AmeriCorps Members who exercise best practices in tutoring are in fact more impactful with students (among many other interesting questions). The reason I put off this analysis is because the 26 Excel workbooks for tracking this data were not designed with aggregation in mind. The records are indexed by first names and nicknames, headers are inconsistent (and multi-indexed), and the file structure does not reflect standardized organization.</p>
+<p>The first task was to identify the file paths to each Excel workbook. This was accomplished using <code>os.walk()</code> to list all contents of the relevant SharePoint directories. Since there are only 26 files, and the filenames are not patterned, I chose to simply copy-paste the file paths I wanted into a list.</p>
+<p>The next challenge was that these Excel workbooks do not contain consistent sheets. All workbooks contain months as sheet names, but some coaches split their workbook into two semesters. Instead of pandas' <code>pd.read_excel()</code>, I used <code>pd.ExcelFile()</code>. This allowed me to load the workbook once, then only pull the sheets whose names also occur in the set of sheets I'm interested in:</p>
+<iframe src="codeshare/chiPy2_5.html" width="100%" height="225" scrolling="yes" frameBorder="0"></iframe>
+<p>To this process, I also added columns for the month (the sheet name) and the school (the directory in which the file resides), but again the school folder names were not standardized.</p>
+<p>Enter <code>fuzzywuzzy</code>, a very hand package for finding and scoring text matches. I performed fuzzy matches between the folder name columns and the official school names from Salesforce like so:</p>
+<iframe src="codeshare/chiPy2_6.html" width="100%" height="475" scrolling="yes" frameBorder="0"></iframe>
+<p>Using the same process, I was able to clean ACM names too. However, in this case there were several ambiguous matches, which I resolved by manually comparing names between the Excel workbook and the validated set of ACM names from Salesforce. I then fixed the mis-matched names in Excel by hand. You can also view this full process in the project repository.</p>
+
+<h4>Next Steps</h4>
+<p>Next in my analysis will be cleaning and combining of 2-3 more data sources. Then I will conduct exploratory data analysis, cyclically chasing my branching curiosities as they come. For example, I will experiment with various definitions of ACM success to tentatively determine which features seem worthwhile to explore further.</p>
+
           </div>
         </div>
       </div>
