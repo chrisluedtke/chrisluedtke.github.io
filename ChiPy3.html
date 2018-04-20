@@ -18,7 +18,15 @@
     <meta name="author" content="">
 
     <title>Chris Luedtke's Blog</title>
+    <style>
 
+
+    .center-fit {
+       max-width: 100%;
+       max-height: 100%;
+       margin: auto;
+    }
+    </style>
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -93,19 +101,26 @@
             <p>Nonethesless, I am proud of my progress. I dusted off the statistics I learned during experimental psychology in undergrad and reaquainted myself with normalization, t-tests, and linear modeling. After cleaning and merging my data frames, I tooled around with the target attribute (a.k.a. 'response' or 'dependent variable'). Initially, I aggregated student-level data to get one metric per tutor using the function:</p>
 
             <p>TutorScore = N_StudentsMetTarget ^ 1.5  -  N_StudentsMissedTarget ^ 1.3</p>
-            <p> (<a href="https://academo.org/demos/3d-surface-plotter/?expression=y%5E1.5-x%5E1.3&amp;xRange=0%2C%2B12&amp;yRange=0%2C%2B12&amp;resolution=12">link to graphical view</a>)</p>
-            <p><img src="img/score_function.png" alt="Score Function" title="Score Function"></p>
+            <div><a href="https://academo.org/demos/3d-surface-plotter/?expression=y%5E1.5-x%5E1.3&amp;xRange=0%2C%2B12&amp;yRange=0%2C%2B12&amp;resolution=12" target="_blank">
+              <img src="img/score_function.png" alt="Score Function" title="Click for interactive">
+            </a></div>
 
             <p>This method gives disproportionate weight to tutors with larger tutoring groups. A tutor who had 8 students hit their target and 4 students miss gets a higher score than a tutor who had 4 students grow and 2 miss. It also defines the magnitude of one student meeting their assessment target as slightly greater than that of a student missing.</p>
 
             <p>Using this score as my response/target/dependent variable, I began to explore what other attributes might correlate. The graphic below shows tutoring performance distributed by schools. There appears to be some difference in tutor performance by school (i.e. an 'effect of school membership'), as we would expect.</p>
-            <p><img src="img/scores_by_school.png" alt="alt text" title="Logo Title Text 1"></p>
+            <div>
+              <img class="center-fit" src="img/scores_by_school.png" alt="Tutor Score by School" title="Tutor Score by School">
+            </div>
 
             <p>Another way my organization classifies successful tutors is by observing and rating their tutoring sessions. Coaching staff rate tutors in 5 categories: Planning, Effective Tutoring, Effective Student Engagement, Student Program Monitoring, and Application of Training. Below are the relationships between observation-based tutoring scores and student-growth-based tutoring scores. Tutoring ratings were aggregated via mean by tutor, and each coach's mean-rating set was normalized via z-score. The shading represents the 95% confidence interval.</p>
-            <p><img src="img/observation_scores_.png" alt="Observation Scores" title="Observation Scores"></p>
+            <div><a href="img/observation_scores_.png" target="_blank">
+              <img class="center-fit" src="img/observation_scores_.png" alt="Observation Scores" title="Observation Scores">
+            </a></div>
 
             <p>Here is the same data colored by the coach who provided the rating.</p>
-            <img src="img/observation_scores_by_coach.png" alt="Observation Scores by Coach" title="Observation Scores by Coach"></p>
+            <div><a href="img/observation_scores_by_coach.png" target="_blank">
+              <img class="center-fit" src="img/observation_scores_by_coach.png" alt="Observation Scores by Coach" title="Observation Scores by Coach">
+            </a></div>
 
             <p>While the confidence intervals are quite large, there is some evidence for positive correlation in 'ESE Rating' and 'Learn Rating' for a couple coaches. Perhaps there are groups of tutors whose tutoring ratings in fact relate to their students' assessment growth, but only at certain schools, or only if they acheived a certain number of tutoring minutes with their students.</p>
 
@@ -130,20 +145,11 @@
             <p>In <a href="">ChiPy Blog 1</a>, I mentioned that I cowrote an R-based algorithm to place our AmeriCorps Members into school teams. The current plan is to deploy this algorithm through a Power BI dashboard, but there are some significant drawbacks. This requires the user to install all dependencies and manage any compatibility quirks. It is also limited to a 30 minute runtime by Power BI. Most frustrating of all, <a href="https://community.powerbi.com/t5/Desktop/Query-Containing-R-Script-Algorithm-is-Evaluated-Twice-on/m-p/394475#M179946">due to a bug</a>, the entire algorithm runs twice. This taxes computer resources and pushes us closer to that pesky 30 minute threshold.</p>
 
             <p>So for the next month and a half, in addition to keeping up my data science studying (and stalling until it becomes easier), I am working on a Django web app packaged into a Docker container. I already have a nice start thanks to the <a href="https://tutorial.djangogirls.org/en/">Django Girls Tutorial</a>, which I highly recommend.</p>
+
             <p>For the unfamiliar, Django is a web framework that handles some of the heavy lifting in web app development. With a few Python classes, you can define database models and iteratively construct webpages that query those models based on url rules.</p>
 
             <p>Here's where I am at, but rest assured there's more under the hood:</p>
-            <p><img src="img/its_a_start.png" alt="It&#39;s a Start" title="It&#39;s a Start"></p>
-
-
-
-
-
-
-
-
-
-
+            <div><img class="center-fit" src="img/its_a_start.png" alt="Its a Start" title="Its a Start"></div>
 
           </div>
         </div>
