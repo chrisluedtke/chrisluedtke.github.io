@@ -104,7 +104,7 @@
 
             <p>This type of problem falls into the general umbrella of combinatorial optimization, where the goal is finding the best combination from a large pool of possibilities. For example, for a site of 80 AmeriCorps Members (ACMs) split into 8 equally sized teams, there are 5.9 x 10^61 possible combinations (for comparison, there are 8.1 x 10^67 ways to shuffle a deck of cards, which is regarded as practically infinite).</p>
 
-            <p>In this post, we go over how we implemented our solution to this problem so that others might adapt it to their own use case. This post was a collaborative effort between Alex Perusse <a href="https://mrklees.github.io/">(blog)</a> and Chris Luedtke <a href="https://chrisluedtke.github.io/">(blog)</a>.</p>
+            <p>In this post, we go over how we implemented our solution to this problem so that others might adapt it to their own use case. This post was a collaborative effort with Alex Perusse <a href="https://mrklees.github.io/">(blog)</a>.</p>
 
             <h3>Defining the Business Need</h3>
 
@@ -155,7 +155,7 @@
 
             <p>In such a complex space, the hill climbing algorithm  will tend to converge to one of the many dips, but not likely the lowest possible point.</p>
 
-            <p>The simulated annealing algorithm offers a solution to the problem with just a slight adjustment to hill climbing.  What we need is a strategy which can *explore a series of worse placements*.  While hill climbing gets stuck in areas where *any swap leads to a worse placement*, simulated annealing allows for worse placements. Therefore we can escape the lip of the small dip if we get stuck, and we can then potentially find an even lower point.</p>
+            <p>The simulated annealing algorithm offers a solution to the problem with just a slight adjustment to hill climbing.  What we need is a strategy which can <i>explore a series of worse placements</i>.  While hill climbing gets stuck in areas where <i>any swap leads to a worse placement</i>, simulated annealing allows for worse placements. Therefore we can escape the lip of the small dip if we get stuck, and we can then potentially find an even lower point.</p>
 
             <p>Simulated annealing gets its name from metallurgy, where the annealing of metals involves heating them up and then slowly cooling to ultimately reduce the defects in the metal.  Analogously, in our simulated annealing algorithm, there is a "temperature" component which corresponds to the probability that we will accept a worse placement. When the temperature is high, the algorithm is more likely to accept a placement which is worse than the one it is currently at.  However, as the temperature "cools" over the course of the run, the algorithm becomes more conservative and less likely to accept a worse placement. We can adapt the algorithm from before to include these details:</p>
 
@@ -188,7 +188,7 @@
 
             <h4>Soft Constraints</h4>
 
-            <p>Since we have many different variables contributing to the loss of the placement, we need a loss function for each individual variable.  This requires some choices be made about *how* we calculate loss.  For some variables, this was fairly straightforward.  For educational experience, we set ideal targets at each school for the number of ACMs with high school experience and those with college experience.  The ideal number of ACMs from those subgroups is set for each team according to an equal distribution to each team.  Then at each iteration we calculate the difference in desired ACMs from that subgroup and the actual, and the square of the result. For other variables, we calculate values like the variance of the ages of the team compared to the variance of the ages of the ACMs at the whole site, and take the absolute value of their difference.  Once we calculate the individual losses for each variable, we add them up to get the total loss.</p>
+            <p>Since we have many different variables contributing to the loss of the placement, we need a loss function for each individual variable.  This requires some choices be made about <i>how</i> we calculate loss.  For some variables, this was fairly straightforward.  For educational experience, we set ideal targets at each school for the number of ACMs with high school experience and those with college experience.  The ideal number of ACMs from those subgroups is set for each team according to an equal distribution to each team.  Then at each iteration we calculate the difference in desired ACMs from that subgroup and the actual, and the square of the result. For other variables, we calculate values like the variance of the ages of the team compared to the variance of the ages of the ACMs at the whole site, and take the absolute value of their difference.  Once we calculate the individual losses for each variable, we add them up to get the total loss.</p>
 
             <p>One way we improved the efficiency of this process was to pre-process the data by changing categorical variables into a series of boolean columns.</p>
 
@@ -218,17 +218,17 @@
 
             <p>For each school day in 2018, Chicago's ACMs commute 114 hours less than in 2017. Over the course of the 2018 school year (150 in-school days), the average ACM commutes 90 hours less than in 2017. ACMs already work 10 hours per day in our program, so this improvement is tremendously welcome from their perspective.</p>
 
-            <h3>Scaling the Solution</h3>
+            <h3>Scaling the Solution*</h3>
 
             <p>Developing in R improved both the efficiency and efficacy of the method in addition to streamlining the process for non-technical folks. While the original Excel-based application ('CY Jam') had only been used in Los Angeles and a few other sites, our re-worked method is scheduled for use in 13. This is largely due to the application's improved usability.</p>
 
-            <p>With the algorithm implemented in R, we were able develop a more user-friendly platform to run the algorithm in Power BI. In this workflow, a site representative provides two excel sheets with ACM attributes (typically from a survey) and school team attributes from the site and district. When loading the Power BI template, the user is prompted to set various options that modified the soft and firm constraints of the placements.</p>
+            <p>With the algorithm implemented in R, we developed a user-friendly Power BI platform to run it and visualize results. This was a surprisingly simple deployment, but it had several important limitations. For one, Power BI prevents R scripts from running over 30 minutes. For another, Power BI's convoluted query schedule triggers the R script to <a href="https://community.powerbi.com/t5/Desktop/Query-Containing-R-Script-Algorithm-is-Evaluated-Twice-on/m-p/394475#M179946">run twice at the same time</a>. On top of these issues, the user was responsible for installing and configuring R and all dependencies.</p>
 
-            <p>While Power BI is our go-to method and a large improvement on CY Jam, several important limitations remain. For one, Power BI prevents R scripts from running over 30 minutes. For another, Power BI's convoluted query schedule triggers the R script to <a href="https://community.powerbi.com/t5/Desktop/Query-Containing-R-Script-Algorithm-is-Evaluated-Twice-on/m-p/394475#M179946">run twice in parallel</a>. On top of these issues, the user still must install and configure R and its dependencies.</p>
-
-            <p>Ultimately, the most streamlined user workflow would require a dedicated app, which we have already begun developing:</p>
+            <p>Ultimately, we scrapped Power BI in favor of a dedicated web app written in the Python django framework. We packaged the app into a Docker container and deployed on Azure. Here's a peak:</p>
 
             <div><img class="center-fit" src="img/teamplacement/placement_app.gif" title="Placement App Demo"></div>
+
+            <p><i><small>* Updated 06/14 with webapp preview</small></i></p>
 
           </div>
         </div>
