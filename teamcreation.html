@@ -224,7 +224,7 @@
 
             <p>With the algorithm implemented in R, we developed a user-friendly Power BI platform to run it and visualize results. This was a surprisingly simple deployment, but it had several important limitations. For one, Power BI prevents R scripts from running over 30 minutes. For another, Power BI's convoluted query schedule triggers the R script to <a href="https://community.powerbi.com/t5/Desktop/Query-Containing-R-Script-Algorithm-is-Evaluated-Twice-on/m-p/394475#M179946">run twice at the same time</a>. On top of these issues, the user was responsible for installing and configuring R and all dependencies.</p>
 
-            <p>Ultimately, we scrapped Power BI in favor of a dedicated web app written in the Python django framework. We packaged the app into a Docker container and deployed on Azure. Here's a peak:</p>
+            <p>Ultimately, we scrapped Power BI in favor of a dedicated web app written in the Python django framework. We packaged the app into a Docker container and deployed on Azure. Here's a peek:</p>
 
             <div><img class="center-fit" src="img/teamplacement/placement_app.gif" title="Placement App Demo"></div>
 
