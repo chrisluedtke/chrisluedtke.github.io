@@ -167,14 +167,14 @@
               <p>The typical ride lasted <strong>11.7 minutes</strong> and covered between <strong>1.0</strong> and <strong>1.2 miles</strong>. The longest ride covered between <strong>22.9</strong> and <strong>26.2 miles</strong> in <strong>2.9 hours</strong>.</p>
               <p>The typical bike was ridden <strong>2.8 thousand</strong> times for <strong>820 hours</strong>.</p>
               <p>The longest ridden bike covered between <strong>6.5</strong> and <strong>8.1 thousand miles</strong>. Here&apos;s a map of all its routes.</p>
-              <iframe src="divvy-data/moved_stations.html" width="100%" height="200" scrolling="no" frameborder="0"></iframe>
+              <iframe src="img/divvy-data/moved_stations.html" width="100%" height="200" scrolling="no" frameborder="0"></iframe>
 
               <h4 id="time-series-analysis">Time Series Analysis</h4>
               <p>Ultimately I set out to characterize and visualize Chicago&apos;s bikeshare usage. Due to Chicago&apos;s layout, I suspected this line of analysis would return fascinating results.</p>
               <p>To investigate, I took all 2,017 days of data, cut them into 30 minute segments, and calculated statistics for each station within those timeframes across all days. In particular, I was interested in each station&apos;s net arrivals and departures. For each station, I added those numbers and divided by the number of days the station had been active.</p>
               <p>This gave me 48 &apos;snapshots&apos; of Chicago bikeshare activity, each representing a separate typical 30 minute period of the day. To animate this data more smoothly, I interpolated up to 720 frames to give &apos;snapshots&apos; representing 2 minutes of the day.</p>
               <p>Here&apos;s the result.</p>
-              <p><iframe width="560" height="315" src="https://www.youtube.com/embed/SVueGQPpz14&amp;autoplay=1&amp;loop=1&amp;rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+              <p><iframe width="720" height="400" src="https://www.youtube.com/embed/SVueGQPpz14&autoplay=1&loop=1&rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 
               <p>Winter vs Summer plot</p>
 
