@@ -112,8 +112,7 @@
 
               <p>My first step was writing a <a href="https://github.com/chrisluedtke/divvy-data-analysis/tree/master/divvy">python package</a> to load the data neatly. Here&apos;s the result, pulling in ~2 GB of data:</p>
 
-              <pre><code class="language-python">
-import pandas as pd
+              <pre><code class="language-python">import pandas as pd
 
 import divvy
 
@@ -124,8 +123,7 @@ rides, stations = divvy.historical_data.get_data(
 )
 
 rides.to_pickle(&apos;data/rides.pkl&apos;)
-stations.to_pickle(&apos;data/stations.pkl&apos;)
-              </code></pre>
+stations.to_pickle(&apos;data/stations.pkl&apos;)</code></pre>
 
               <p>Divvy data come in <code>zip</code> files grouped by quarter. Columns and date formats are not standardized across files, so I manually wrote them into the loading process.</p>
 
@@ -172,7 +170,7 @@ stations.to_pickle(&apos;data/stations.pkl&apos;)
 
               <p>All duplicate stations and their movements:</p>
 
-              <p><iframe src="img/divvy-data/moved_stations.html" width="100%" height="100%" scrolling="no" frameborder="0"></iframe></p>
+              <p><iframe src="img/divvy-data/moved_stations.html" width="100%" height="405" scrolling="no" frameborder="0"></iframe></p>
 
               <p>Ultimately I decided to average the remaining station coordinates. I didn&apos;t suspect the difference would make a meaningful impact on my analysis.</p>
 
@@ -183,7 +181,7 @@ stations.to_pickle(&apos;data/stations.pkl&apos;)
               <p>The typical bike was ridden <strong>2.8 thousand</strong> times for <strong>820 hours</strong>.</p>
               <p>The longest ridden bike covered between <strong>6.5</strong> and <strong>8.1 thousand miles</strong>. Here&apos;s a map of all its routes.</p>
 
-              <p><iframe src="img/divvy-data/longest_ridden.html" width="100%" height="100%" scrolling="no" frameborder="0"></iframe></p>
+              <p><iframe src="img/divvy-data/longest_ridden.html" width="100%" height="405" scrolling="no" frameborder="0"></iframe></p>
 
               <h4 id="time-series-analysis">Time Series Analysis</h4>
 
@@ -195,7 +193,7 @@ stations.to_pickle(&apos;data/stations.pkl&apos;)
 
               <p>Here&apos;s the result. Best viewed at 4K resolution, and right-click to loop.</p>
 
-              <p><iframe width="720" height="480" src="https://www.youtube.com/embed/SVueGQPpz14" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+              <p><iframe width="720" height="405" src="https://www.youtube.com/embed/SVueGQPpz14" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 
 
           </div>
