@@ -101,28 +101,40 @@
           <div class="col-lg-8 col-md-10 mx-auto">
 
               <p>Each day, Chicago&apos;s utilitarian design enables an incredible flow of people. Perhaps nothing bears this out better than the ridership of millions of bikes over several years. In this article, I analyze 17 million bikeshare rides and animate the most representative day of Chicago bikeshare. Skip ahead for the pretty pictures.</p>
+
               <h3 id="chicago-biking">Chicago Biking</h3>
               <p>Bicycles are the best way to see a city, and yes, I am including Chicago&apos;s sometimes brutal winter months. Even as temperatures approached <a href="https://darksky.net/details/41.8756,-87.6244/2019-1-30/us12/en">-50&#xB0;F last week</a>, our bikeshare <a href="https://twitter.com/DivvyBikes/status/1091398529975836673">received ridership</a>.</p>
+
               <p>Our blissfully flat terrain, lakefront paths, and bike infrastructure investments landed us Bicycling Magazine&apos;s <a href="https://www.bicycling.com/news/a20048181/the-50-best-bike-cities-of-2016/">most bike-friendly city in the country</a> (6th in <a href="https://www.bicycling.com/culture/a23676188/best-bike-cities-2018/">2018</a>). This past December, Chicago completed <a href="https://www.chicagoparkdistrict.com/parks-facilities/lakefront-trail">$12 million</a> and <a href="http://www.navypierflyover.com/">$60 million</a> projects to secure 18 continuous miles of dedicated lakefront bike path through the heart of Chicago.</p>
+
               <h3 id="data-sourcing">Data Sourcing</h3>
               <p>With mounting excitement for Chicago&apos;s cyclist future, I devoted my past week to a thorough shakedown of our bikeshare&apos;s <a href="https://www.divvybikes.com/system-data">public datasets</a>. You can find the code for this analysis on  <a href="https://github.com/chrisluedtke/divvy-data-analysis">GitHub</a>, including a <a href="https://nbviewer.jupyter.org/github/chrisluedtke/divvy-data-analysis/blob/master/notebook.ipynb">notebook</a> that steps through my process.</p>
+
               <p>My first step was writing a <a href="https://github.com/chrisluedtke/divvy-data-analysis/tree/master/divvy">python package</a> to load the data neatly. Here&apos;s the result, pulling in ~2 GB of data:</p>
-              <pre><code class="language-python">import pandas as pd
 
-              import divvy
+              <pre><code class="language-python">
+import pandas as pd
 
-              rides, stations = divvy.historical_data.get_data(
-                  year=[str(_) for _ in range(2013,2019)],
-                  rides=True,
-                  stations=True
-              )
+import divvy
 
-              rides.to_pickle(&apos;data/rides.pkl&apos;)
-              stations.to_pickle(&apos;data/stations.pkl&apos;)</code></pre>
+rides, stations = divvy.historical_data.get_data(
+  year=[str(_) for _ in range(2013,2019)],
+  rides=True,
+  stations=True
+)
+
+rides.to_pickle(&apos;data/rides.pkl&apos;)
+stations.to_pickle(&apos;data/stations.pkl&apos;)
+              </code></pre>
+
               <p>Divvy data come in <code>zip</code> files grouped by quarter. Columns and date formats are not standardized across files, so I manually wrote them into the loading process.</p>
+
               <p>Most challenging, the ride tables don&apos;t include geographic coordinates for ride origin and destination. That information is tied to stations, which are contained in their own files. Divvy also didn&apos;t provide station information at all for 2018, so I integrated data from their <a href="https://feeds.divvybikes.com/stations/stations.json">live JSON station feed</a> to get the most recent locations.</p>
+
               <p>I also discovered stations had been physically moved while maintaining the same row-level ID. This greatly reduces the certainty of geographic analysis, as I can only be certain of a station&apos;s location at the end of the quarter on which the data were published. I calculated the geographic distance between these movements over time and dropped movements below a ~50 meter <a href="https://en.wikipedia.org/wiki/Decimal_degrees#Precision">precision level</a>.</p>
+
               <p>A representative station:</p>
+
               <table border="1" class="dataframe">
                 <thead>
                   <tr style="text-align: right;">
