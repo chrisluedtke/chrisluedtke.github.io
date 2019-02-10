@@ -103,7 +103,7 @@
               <p>Each day, Chicago&apos;s utilitarian design enables an incredible flow of people. Perhaps nothing bears this out better than the ridership of millions of bikes over several years. In this article, I analyze 17 million bikeshare rides and animate the most representative day of Chicago bikeshare. Skip ahead for the pretty pictures.</p>
 
               <h3 id="chicago-biking">Chicago Biking</h3>
-              <p>Bicycles are the best way to see a city, and yes, I am including Chicago&apos;s sometimes brutal winter months. Even as temperatures approached <a href="https://darksky.net/details/41.8756,-87.6244/2019-1-30/us12/en">-50&#xB0;F last week</a>, our bikeshare <a href="https://twitter.com/DivvyBikes/status/1091398529975836673">received ridership</a>.</p>
+              <p>Bicycles are the best way to see a city, and yes, I am including Chicago&apos;s sometimes brutal winter months. Even as temperatures approached <a href="https://darksky.net/details/41.8756,-87.6244/2019-1-30/us12/en">-50&#xB0;F last week</a>, our bikeshare still <a href="https://twitter.com/DivvyBikes/status/1091398529975836673">received ridership</a>.</p>
 
               <p>Our blissfully flat terrain, lakefront paths, and bike infrastructure investments landed us Bicycling Magazine&apos;s <a href="https://www.bicycling.com/news/a20048181/the-50-best-bike-cities-of-2016/">most bike-friendly city in the country</a> (6th in <a href="https://www.bicycling.com/culture/a23676188/best-bike-cities-2018/">2018</a>). This past December, Chicago completed <a href="https://www.chicagoparkdistrict.com/parks-facilities/lakefront-trail">$12 million</a> and <a href="http://www.navypierflyover.com/">$60 million</a> projects to secure 18 continuous miles of dedicated lakefront bike path through the heart of Chicago.</p>
 
@@ -111,19 +111,7 @@
               <p>With mounting excitement for Chicago&apos;s cyclist future, I devoted my past week to a thorough shakedown of our bikeshare&apos;s <a href="https://www.divvybikes.com/system-data">public datasets</a>. You can find the code for this analysis on  <a href="https://github.com/chrisluedtke/divvy-data-analysis">GitHub</a>, including a <a href="https://nbviewer.jupyter.org/github/chrisluedtke/divvy-data-analysis/blob/master/notebook.ipynb">notebook</a> that steps through my process.</p>
 
               <p>My first step was writing a <a href="https://github.com/chrisluedtke/divvy-data-analysis/tree/master/divvy">python package</a> to load the data neatly. Here&apos;s the result, pulling in ~2 GB of data:</p>
-
-              <pre><code class="language-python">import pandas as pd
-
-import divvy
-
-rides, stations = divvy.historical_data.get_data(
-  year=[str(_) for _ in range(2013,2019)],
-  rides=True,
-  stations=True
-)
-
-rides.to_pickle(&apos;data/rides.pkl&apos;)
-stations.to_pickle(&apos;data/stations.pkl&apos;)</code></pre>
+              <script src="https://gist.github.com/chrisluedtke/588da34440196b146c364f47fc9bda7e.js"></script>
 
               <p>Divvy data come in <code>zip</code> files grouped by quarter. Columns and date formats are not standardized across files, so I manually wrote them into the loading process.</p>
 
@@ -133,9 +121,9 @@ stations.to_pickle(&apos;data/stations.pkl&apos;)</code></pre>
 
               <p>A representative station:</p>
 
-              <table border="1" class="dataframe">
-                <thead>
-                  <tr style="text-align: right;">
+              <table border="0", style="font-family: monospace;width: 100%;text-align: right;border-collapse: collapse">
+                <thead style="border-bottom: 1px solid black">
+                  <tr>
                     <th>id</th>
                     <th>latitude</th>
                     <th>longitude</th>
@@ -143,7 +131,7 @@ stations.to_pickle(&apos;data/stations.pkl&apos;)</code></pre>
                     <th>source</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody style="border-bottom: 1px solid black">
                   <tr>
                     <td>2</td>
                     <td>41.872293</td>
@@ -176,10 +164,13 @@ stations.to_pickle(&apos;data/stations.pkl&apos;)</code></pre>
 
               <h4 id="descriptives">Descriptives</h4>
               <p>With cleaned data, the beauty of the information could finally shine. There really are countless, never-ending lines of inquiry one may follow in this data set, and I suspect this won&apos;t be my final analysis.</p>
-              <p>For starters, since June 2013 there have been <strong>17.5 million trips</strong>, totaling <strong>5.3 million</strong> hours, and covering between <strong>21.7</strong> (haversine) and <strong>27.1</strong> (taxi cab) <strong>million miles</strong>. That&apos;s 56 trips to the moon and back!</p>
-              <p>The typical ride lasted <strong>11.7 minutes</strong> and covered between <strong>1.0</strong> and <strong>1.2 miles</strong>. The longest ride covered between <strong>22.9</strong> and <strong>26.2 miles</strong> in <strong>2.9 hours</strong>.</p>
-              <p>The typical bike was ridden <strong>2.8 thousand</strong> times for <strong>820 hours</strong>.</p>
-              <p>The longest ridden bike covered between <strong>6.5</strong> and <strong>8.1 thousand miles</strong>. Here&apos;s a map of all its routes.</p>
+              <p>Since June 2013 there have been <strong>17.5 million trips</strong>, totaling <strong>5.3 million</strong> hours, and covering between <strong>21.7</strong> (haversine) and <strong>27.1</strong> (taxi cab) <strong>million miles</strong>. That&apos;s 56 trips to the moon and back!</p>
+
+              <p>The typical ride covered <strong>1.0</strong> to <strong>1.2 miles</strong> in <strong>11.7 minutes</strong>. The longest ride covered <strong>22.9</strong> to <strong>26.2 miles</strong> in <strong>2.9 hours</strong>.</p>
+
+              <p>The typical bike covered <strong>4.3 thousand miles</strong> over <strong>2.8 thousand rides</strong>, lasting a total of <strong>820 hours</strong>.</p>
+
+              <p>The farthest ridden bike covered between <strong>6.5</strong> and <strong>8.1 thousand miles</strong>. Here&apos;s all the routes it covered.</p>
 
               <p><iframe src="img/divvy-data/longest_ridden.html" width="100%" height="405" scrolling="no" frameborder="0"></iframe></p>
 
@@ -193,7 +184,18 @@ stations.to_pickle(&apos;data/stations.pkl&apos;)</code></pre>
 
               <p>Here&apos;s the result. Best viewed at 4K resolution, and right-click to loop. Each dot represents a bike station. Circle size corresponds to station usage. <strong><font color="#f06e18">Orange</font></strong> stations are radiating bikes. <strong><font color="#18f0da">Blue</font></strong> stations are collecting bikes. Gray stations are neutral.</p>
 
-              <p><iframe width="720" height="405" src="https://www.youtube.com/embed/SVueGQPpz14?modestbranding=1&loop=1&rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+              <p><iframe width="100%" height="405" src="https://www.youtube.com/embed/SVueGQPpz14?modestbranding=1&loop=1&rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+
+              <p>Finally, here are two interactive frames from the animation. Click or tap the circles for more detail. Let me know if you discover something.<p>
+
+              <table style="width:100%; text-align:center">
+                <tr>
+                  <th>8:00am - 8:30am</th>
+                  <th>5:00pm - 5:30pm</th>
+                </tr>
+              </table>
+
+              <p><iframe src="img/divvy-data/am_v_pm.html" width="100%" height="500" scrolling="no" frameborder="0"></iframe></p>
 
           </div>
         </div>
