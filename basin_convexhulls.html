@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script>L_PREFER_CANVAS=false; L_NO_TOUCH=false; L_DISABLE_3D=false;</script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.4.0/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.4.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawcdn.githack.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+    <meta name="viewport" content="width=device-width,
+        initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>#map_c162ff297cab4fba9a643639b3369970 {
+        position: relative;
+        width: 100.0%;
+        height: 100.0%;
+        left: 0.0%;
+        top: 0.0%;
+        }
+    </style>
+</head>
+<body>    
+    
+    <div class="folium-map" id="map_c162ff297cab4fba9a643639b3369970" ></div>
+</body>
+<script>    
+    
+    
+        var bounds = null;
+    
+
+    var map_c162ff297cab4fba9a643639b3369970 = L.map(
+        'map_c162ff297cab4fba9a643639b3369970', {
+        center: [-5.885572340514868, 35.149669123888344],
+        zoom: 6,
+        maxBounds: bounds,
+        layers: [],
+        worldCopyJump: false,
+        crs: L.CRS.EPSG3857,
+        zoomControl: true,
+        });
+
+
+    
+    var tile_layer_835e53ee7cb641d19132a575c44c5b73 = L.tileLayer(
+        'https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png',
+        {
+        "attribution": null,
+        "detectRetina": false,
+        "maxNativeZoom": 18,
+        "maxZoom": 18,
+        "minZoom": 0,
+        "noWrap": false,
+        "opacity": 1,
+        "subdomains": "abc",
+        "tms": false
+}).addTo(map_c162ff297cab4fba9a643639b3369970);
+    
+
+            var polygon_2958e975950b4ce3ba8d740621c10be4 = L.polygon(
+                [[-5.19614742, 33.20276044], [-3.92558439, 32.75727554], [-3.92289921, 32.75736103], [-3.91696, 32.75796772], [-3.90085106, 32.76902913], [-3.75137794, 32.93716628], [-3.36833387, 33.406194], [-3.28980097, 33.52358406], [-1.97990163, 35.66489307], [-2.54675467, 36.78721009], [-2.88925137, 37.39656399], [-2.95901219, 37.52033905], [-2.97734859, 37.54918996], [-2.99991377, 37.58225602], [-3.01776075, 37.60640527], [-3.03713413, 37.62840911], [-3.0594035, 37.63018702], [-5.54155245, 37.22196873], [-6.77981287, 35.31290169], [-6.01528414, 34.04946234]],
+                {
+  "bubblingMouseEvents": true,
+  "color": "lightblue",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "lightskyblue",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1.0,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 2
+}
+                )
+                .addTo(map_c162ff297cab4fba9a643639b3369970);
+            
+    
+            var popup_36866dcdbf554c398def1f57f61033d4 = L.popup({maxWidth: '100%'
+            
+            });
+
+            
+                var html_c9f38df505cd40fea6a84d1227c0c151 = $(`<div id="html_c9f38df505cd40fea6a84d1227c0c151" style="width: 100.0%; height: 100.0%;">Internal</div>`)[0];
+                popup_36866dcdbf554c398def1f57f61033d4.setContent(html_c9f38df505cd40fea6a84d1227c0c151);
+            
+
+            polygon_2958e975950b4ce3ba8d740621c10be4.bindPopup(popup_36866dcdbf554c398def1f57f61033d4)
+            ;
+
+            
+        
+    
+
+            var polygon_961873aea6a64c09b4b2fa881b1f214a = L.polygon(
+                [[-11.56450865, 35.026846899999995], [-11.56432357, 35.02640546], [-9.28731518, 32.80462444], [-9.27915006, 32.80556914], [-9.21059489, 32.93768574], [-8.98430817, 33.61974287], [-8.98354976, 33.66204822], [-8.98779642, 33.69005422], [-9.29492237, 34.51879306], [-9.52160347, 35.08818682], [-9.5237611, 35.09166761], [-10.05978832, 35.90959589], [-10.19133934, 35.90171975], [-10.2755569, 35.89384663], [-10.58344029, 35.79315109], [-11.5563898, 35.07143819], [-11.55703116, 35.07089064]],
+                {
+  "bubblingMouseEvents": true,
+  "color": "lightblue",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "lightskyblue",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1.0,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 2
+}
+                )
+                .addTo(map_c162ff297cab4fba9a643639b3369970);
+            
+    
+            var popup_93e578004b3943528ff3796d085915a5 = L.popup({maxWidth: '100%'
+            
+            });
+
+            
+                var html_4f286d2c6f47403485abd345dd91012f = $(`<div id="html_4f286d2c6f47403485abd345dd91012f" style="width: 100.0%; height: 100.0%;">Lake Nyasa</div>`)[0];
+                popup_93e578004b3943528ff3796d085915a5.setContent(html_4f286d2c6f47403485abd345dd91012f);
+            
+
+            polygon_961873aea6a64c09b4b2fa881b1f214a.bindPopup(popup_93e578004b3943528ff3796d085915a5)
+            ;
+
+            
+        
+    
+
+            var polygon_fc5138814e1445bcbf1274965b777fe3 = L.polygon(
+                [[-9.27405887, 32.68340653], [-8.89131403, 31.69563983], [-7.76566782, 31.08189693], [-6.4934066, 30.74698564], [-6.26542514, 30.71100192], [-6.18065214, 30.98041812], [-6.20899341, 31.13979173], [-6.82127671, 33.36298728], [-6.89775413, 33.47661963], [-6.94745728, 33.52027067], [-7.92361301, 33.5674232], [-8.67063143, 33.57211675], [-8.93706336, 33.53533647], [-9.09421861, 33.43381594], [-9.26253616, 32.83189195], [-9.26284824, 32.82958444]],
+                {
+  "bubblingMouseEvents": true,
+  "color": "lightblue",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "lightskyblue",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1.0,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 2
+}
+                )
+                .addTo(map_c162ff297cab4fba9a643639b3369970);
+            
+    
+            var popup_47e3684efcfc4d5899a3d5d6b1c43742 = L.popup({maxWidth: '100%'
+            
+            });
+
+            
+                var html_1ee9e2b6bd5949e5b986cab769b874a1 = $(`<div id="html_1ee9e2b6bd5949e5b986cab769b874a1" style="width: 100.0%; height: 100.0%;">Lake Rukwa</div>`)[0];
+                popup_47e3684efcfc4d5899a3d5d6b1c43742.setContent(html_1ee9e2b6bd5949e5b986cab769b874a1);
+            
+
+            polygon_fc5138814e1445bcbf1274965b777fe3.bindPopup(popup_47e3684efcfc4d5899a3d5d6b1c43742)
+            ;
+
+            
+        
+    
+
+            var polygon_ad1837a36ad74a3d8ac601bfd2a69e38 = L.polygon(
+                [[-8.53261571, 31.66540008], [-8.673402900000001, 31.49418772], [-8.48849608, 31.21262718], [-8.36234844, 31.08183593], [-8.25564506, 31.00189856], [-7.95552421, 30.84053228], [-7.4844542, 30.58851879], [-5.41675623, 29.75061904], [-4.90626498, 29.6071219], [-4.90301609, 29.60720109], [-4.83769501, 29.61194674], [-4.76458297, 29.63890417], [-4.47629835, 29.751895399999995], [-4.4320808, 29.76935785], [-2.72414669, 30.659460499999998], [-2.70830938, 30.71012173], [-2.70499454, 30.72397974], [-2.63197167, 31.31381474], [-2.63189806, 31.31600085], [-2.63248164, 31.322026], [-2.73828848, 31.58115470000001], [-3.21093546, 32.50962675], [-4.3686174000000015, 33.36952886], [-6.04759773, 33.91831283], [-6.29621671, 33.8473584], [-6.30714387, 33.84355315], [-6.46207023, 33.7780613], [-6.46868405, 33.774718799999995], [-6.47219211, 33.77283585]],
+                {
+  "bubblingMouseEvents": true,
+  "color": "lightblue",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "lightskyblue",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1.0,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 2
+}
+                )
+                .addTo(map_c162ff297cab4fba9a643639b3369970);
+            
+    
+            var popup_1b8d534fb9034c089c69f3efe63623d0 = L.popup({maxWidth: '100%'
+            
+            });
+
+            
+                var html_aead7a21cef64fd2bfc78ab2d3be78db = $(`<div id="html_aead7a21cef64fd2bfc78ab2d3be78db" style="width: 100.0%; height: 100.0%;">Lake Tanganyika</div>`)[0];
+                popup_1b8d534fb9034c089c69f3efe63623d0.setContent(html_aead7a21cef64fd2bfc78ab2d3be78db);
+            
+
+            polygon_ad1837a36ad74a3d8ac601bfd2a69e38.bindPopup(popup_1b8d534fb9034c089c69f3efe63623d0)
+            ;
+
+            
+        
+    
+
+            var polygon_82b9edae9d434d858187f905521db1a4 = L.polygon(
+                [[-3.93314017, 32.65395441], [-2.9068607, 30.48474998], [-2.85635591, 30.45565582], [-2.64848479, 30.42521463], [-1.22366412, 30.57381277], [-1.06482779, 30.65040622], [-1.05003656, 30.6699857], [-1.04151379, 30.73487262], [-1.02575135, 30.93989762], [-0.99846435, 31.4173489], [-0.998916, 31.77448304], [-1.04237489, 34.09059988], [-1.24740434, 34.4729612], [-1.66416765, 35.22130999999999], [-1.89093952, 35.48647774], [-1.95559747, 35.51174236], [-1.95608186, 35.51180886], [-2.31897517, 35.51070523], [-2.37542109, 35.50624684], [-3.11193993, 34.42217165], [-3.79631218, 33.16558098], [-3.81239435, 33.13189206], [-3.9266112, 32.75451657]],
+                {
+  "bubblingMouseEvents": true,
+  "color": "lightblue",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "lightskyblue",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1.0,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 2
+}
+                )
+                .addTo(map_c162ff297cab4fba9a643639b3369970);
+            
+    
+            var popup_c7e87e4dfb3d41db8976fb196f74787a = L.popup({maxWidth: '100%'
+            
+            });
+
+            
+                var html_e4dedfce0a4b40e5a39d8ef9ad595719 = $(`<div id="html_e4dedfce0a4b40e5a39d8ef9ad595719" style="width: 100.0%; height: 100.0%;">Lake Victoria</div>`)[0];
+                popup_c7e87e4dfb3d41db8976fb196f74787a.setContent(html_e4dedfce0a4b40e5a39d8ef9ad595719);
+            
+
+            polygon_82b9edae9d434d858187f905521db1a4.bindPopup(popup_c7e87e4dfb3d41db8976fb196f74787a)
+            ;
+
+            
+        
+    
+
+            var polygon_09796935ae0d468299b87531a63b9eb2 = L.polygon(
+                [[-5.59191305, 37.02177886], [-3.76135624, 36.41923519], [-3.75992869, 36.41962339], [-3.25731311, 36.56309652], [-3.24229986, 36.57408437], [-3.21990559, 36.60560675], [-3.11590687, 37.04382739], [-3.05721451, 37.5666319], [-3.06177535, 37.664956], [-4.60189149, 39.10270665], [-4.76430745, 39.17288131], [-4.76558728, 39.1727956], [-4.7664072, 39.1726769], [-5.00079036, 39.13466426], [-5.22373004, 39.08408958], [-5.242703, 39.07883161], [-5.28876402, 39.06332647], [-5.54775716, 38.96706017], [-5.92582621, 38.8175982], [-5.8853709, 38.56923837], [-5.5923447, 37.02381013]],
+                {
+  "bubblingMouseEvents": true,
+  "color": "lightblue",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "lightskyblue",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1.0,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 2
+}
+                )
+                .addTo(map_c162ff297cab4fba9a643639b3369970);
+            
+    
+            var popup_f822b4b674824d67a1b055789c8d8e55 = L.popup({maxWidth: '100%'
+            
+            });
+
+            
+                var html_fd1e926a169147348eb02b130e6c3da1 = $(`<div id="html_fd1e926a169147348eb02b130e6c3da1" style="width: 100.0%; height: 100.0%;">Pangani</div>`)[0];
+                popup_f822b4b674824d67a1b055789c8d8e55.setContent(html_fd1e926a169147348eb02b130e6c3da1);
+            
+
+            polygon_09796935ae0d468299b87531a63b9eb2.bindPopup(popup_f822b4b674824d67a1b055789c8d8e55)
+            ;
+
+            
+        
+    
+
+            var polygon_296fdd0f6dcf42aea868e14be430e103 = L.polygon(
+                [[-5.53783205, 34.67224445], [-7.23533015, 39.19959653], [-7.23970334, 39.20993495], [-7.25738022, 39.2447285], [-7.67458691, 39.87876709], [-7.76639508, 39.87386078], [-7.98903568, 39.77906525], [-8.04952272, 39.71938804], [-8.39579715, 39.28279207], [-8.51631949, 39.12480886], [-10.55372573, 36.22998026], [-10.63698814, 35.95361225], [-10.62126939, 35.87996725], [-10.61855943, 35.86869967], [-10.61200844, 35.85138478], [-8.94041371, 33.54027425], [-8.93600865, 33.53525231], [-8.93439353, 33.53471124], [-8.9335247, 33.53463297], [-6.07115155, 33.92954351]],
+                {
+  "bubblingMouseEvents": true,
+  "color": "lightblue",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "lightskyblue",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1.0,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 2
+}
+                )
+                .addTo(map_c162ff297cab4fba9a643639b3369970);
+            
+    
+            var popup_cd38506e472e416dbe8794a4bc5c4336 = L.popup({maxWidth: '100%'
+            
+            });
+
+            
+                var html_c586a65d8fe24ed3afeeb50c1d85d3fe = $(`<div id="html_c586a65d8fe24ed3afeeb50c1d85d3fe" style="width: 100.0%; height: 100.0%;">Rufiji</div>`)[0];
+                popup_cd38506e472e416dbe8794a4bc5c4336.setContent(html_c586a65d8fe24ed3afeeb50c1d85d3fe);
+            
+
+            polygon_296fdd0f6dcf42aea868e14be430e103.bindPopup(popup_cd38506e472e416dbe8794a4bc5c4336)
+            ;
+
+            
+        
+    
+
+            var polygon_c88604fddd014163b76f1467854ddffe = L.polygon(
+                [[-11.64944018, 37.35113776], [-11.56857679, 36.46378568], [-11.333758099999999, 35.06040483], [-11.200329, 34.96423691], [-11.06028577, 34.889770899999995], [-11.03694414, 34.89164672], [-10.67606202, 35.13441218], [-10.52256656, 35.26125768], [-10.51907273, 35.26652897], [-8.52581676, 38.79544793], [-8.51427039, 38.91528042], [-8.49680552, 39.25873559], [-8.49789286, 39.29050365], [-8.51033575, 39.49606469], [-8.51056855, 39.49668619], [-8.51208127, 39.49956724], [-8.51729194, 39.50635676], [-8.52663369, 39.51314946], [-8.529444300000002, 39.51483746], [-10.273867800000001, 40.28607041], [-10.32092335, 40.30199871], [-10.49578459, 40.34519307], [-10.57236393, 40.26492063], [-10.65459484, 40.17086866], [-10.65531733, 40.16969156], [-10.83930946, 39.86207069], [-11.09440288, 39.30632748], [-11.10332249, 39.27991324], [-11.36697424, 38.44130523]],
+                {
+  "bubblingMouseEvents": true,
+  "color": "lightblue",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "lightskyblue",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1.0,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 2
+}
+                )
+                .addTo(map_c162ff297cab4fba9a643639b3369970);
+            
+    
+            var popup_94b01df21490465cbd6c7e4903861e1f = L.popup({maxWidth: '100%'
+            
+            });
+
+            
+                var html_12a8ac2cb53842bcbd7c29cddce762d5 = $(`<div id="html_12a8ac2cb53842bcbd7c29cddce762d5" style="width: 100.0%; height: 100.0%;">Ruvuma / Southern Coast</div>`)[0];
+                popup_94b01df21490465cbd6c7e4903861e1f.setContent(html_12a8ac2cb53842bcbd7c29cddce762d5);
+            
+
+            polygon_c88604fddd014163b76f1467854ddffe.bindPopup(popup_94b01df21490465cbd6c7e4903861e1f)
+            ;
+
+            
+        
+    
+
+            var polygon_030d5dde330d4b0ca461b8465443840e = L.polygon(
+                [[-7.39835482, 39.33564342], [-7.53271865, 37.76226108], [-7.22042851, 36.76518292], [-6.30346824, 35.76281332], [-6.05741219, 35.68356504], [-6.03029921, 35.67831764], [-5.97078433, 35.68052599], [-5.56587899, 35.84321513], [-5.56022804, 35.84648435], [-5.15091847, 36.15168113], [-5.36881081, 37.47174828], [-5.38462646, 37.5180053], [-5.95947609, 38.79985931], [-6.8990694, 39.48119249], [-7.00196327, 39.53713175], [-7.01560525, 39.53689034], [-7.08818301, 39.53459924], [-7.12684025, 39.52368487], [-7.16088786, 39.50758115]],
+                {
+  "bubblingMouseEvents": true,
+  "color": "lightblue",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": true,
+  "fillColor": "lightskyblue",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "lineCap": "round",
+  "lineJoin": "round",
+  "noClip": false,
+  "opacity": 1.0,
+  "smoothFactor": 1.0,
+  "stroke": true,
+  "weight": 2
+}
+                )
+                .addTo(map_c162ff297cab4fba9a643639b3369970);
+            
+    
+            var popup_f45a284dd1c14127955c039a4896d592 = L.popup({maxWidth: '100%'
+            
+            });
+
+            
+                var html_f5e1de0de81744bfb71b04cd97fc524b = $(`<div id="html_f5e1de0de81744bfb71b04cd97fc524b" style="width: 100.0%; height: 100.0%;">Wami / Ruvu</div>`)[0];
+                popup_f45a284dd1c14127955c039a4896d592.setContent(html_f5e1de0de81744bfb71b04cd97fc524b);
+            
+
+            polygon_030d5dde330d4b0ca461b8465443840e.bindPopup(popup_f45a284dd1c14127955c039a4896d592)
+            ;
+
+            
+        
+</script>
