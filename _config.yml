@@ -7,6 +7,7 @@ defaults:
       type: "tags"
     values:
       layout: "tagpage"
+      title: "Chris Luedtke's Blog"
   - scope:
       path: ""
       type: "posts"

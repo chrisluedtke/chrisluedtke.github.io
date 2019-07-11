@@ -1,0 +1,21 @@
+<div class="post-preview">
+    <a {% if post.forward_url %}href="{{ post.forward_url }}"{% else %}href="{{ post.url }}"{% endif %}>
+        <h2 class="post-title">
+            {{ post.title }}
+        </h2>
+        <h3 class="post-subtitle">
+            {{ post.subtitle }}
+        </h3>
+    </a>
+    <p class="post-meta">{{ post.date | date: '%B %d, %Y' }}</p>
+    {% if post.tags %}
+    <div>
+        {% assign tags_sorted = post.tags | sort  %}
+        {% for tag_name in tags_sorted %}
+        {% assign tag = site.tags | where: 'tag', tag_name | first %}
+        <a href="{{ tag.url }}" role="button" class="btn btn-outline-secondary btn-tag">{{ tag.tag | replace: "-", " "}}</a>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+<hr>
