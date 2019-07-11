@@ -22,4 +22,4 @@ Unless I minimize barriers to the sharing process, this blog will remain a barre
 
 That's it! You should end up with something like this:
 
-<iframe src="/assets/html/code/Blog_sample.html" width="100%" height="200" scrolling="no" frameBorder="0"></iframe>
+<iframe src="/assets/html/code/blog_sample.html" width="100%" height="200" scrolling="no" frameBorder="0"></iframe>

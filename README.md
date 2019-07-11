@@ -21,6 +21,11 @@ gem 'github-pages', group: :jekyll_plugins
 bundle install
 ```
 
+Get syntax styling `.css`
+```
+rougify style github > assets/css/syntax.css  
+```
+
 ```
 bundle exec jekyll serve
 ```

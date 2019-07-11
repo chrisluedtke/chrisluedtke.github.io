@@ -172,7 +172,7 @@ img::-moz-selection {
 }
 
 header.masthead {
-  margin-bottom: 5px;
+  margin-bottom: 30px;
   background: no-repeat center center;
   background-color: #868e96;
   background-attachment: scroll;
@@ -447,4 +447,9 @@ footer .copyright {
 .btn-lg {
   font-size: 16px;
   padding: 25px 35px;
+}
+
+pre.highlight {
+  padding: 10px 10px;
+  font-size: 14px;
 }
