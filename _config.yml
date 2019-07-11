@@ -1,0 +1,19 @@
+collections:
+  tags:
+    output: true
+defaults:
+  - scope:
+      path: ""
+      type: "tags"
+    values:
+      layout: "tagpage"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Chris Luedtke"
+  - scope:
+      path: ""
+    values:
+      layout: "default"

@@ -1,9 +1,9 @@
 ---
-layout: post
-author: Chris Luedtke
 title: Team Creation with Simulated Annealing
 subtitle: Solution for City Year AmeriCorps Members
 header_img: /assets/images/cychicago.jpg
+tags:
+- machine-learning
 ---
 
 How do you distribute a large pool of people into a fixed number of teams which maximizes racial and gender diversity, equally distributes beneficial skills and experiences, and conforms to certain rules like preventing prior relationship conflicts?

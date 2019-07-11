@@ -2,6 +2,8 @@
 layout: home
 ---
 {% for post in site.posts %}
+{% for tag_name in post.tags %}
+{% if tag_name == page.tag %}
 <div class="post-preview">
     <a {% if post.forward_url %}href="{{ post.forward_url }}"{% else %}href="{{ post.url }}"{% endif %}>
         <h2 class="post-title">
@@ -17,10 +19,12 @@ layout: home
         {% assign tags_sorted = post.tags | sort  %}
         {% for tag_name in tags_sorted %}
         {% assign tag = site.tags | where: 'tag', tag_name | first %}
-        <a href="{{ tag.url }}" role="button" class="btn btn-outline-secondary btn-tag">{{ tag.tag | replace: "-", " " }}</a>
+        <a href="{{ tag.url }}" role="button" class="btn btn-outline-secondary btn-tag">{{ tag.tag | replace: "-", " "}}</a>
         {% endfor %}
     </div>
     {% endif %}
 </div>
 <hr>
+{% endif %}
+{% endfor %}
 {% endfor %}
