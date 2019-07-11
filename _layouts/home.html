@@ -10,6 +10,7 @@ layout: default
                     <h1>Chris Luedtke</h1>
                     <span class="subheading">Data Scientist for diverse problems and industries</span>
                 </div>
+                </a>
             </div>
        </div>
    </div>
@@ -17,7 +18,33 @@ layout: default
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="col-lg-8 col-md-10 mx-auto" id="posts">
+            <div class="text-right" id="headingOne">
+                <button class="btn btn-filt dropdown-toggle" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Filter Topics
+                </button>
+            </div>
+            <div id="accordion">
+                <div class="card" style="border: 0px;">
+                    <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
+                        <a href="/#posts" role="button" class="btn btn-outline-secondary btn-tag">
+                            all topics
+                        </a>
+                        {% assign counter = 0 %}
+                        {% for tag in site.tags %}
+                        {% for post in site.posts %}
+                            {% if post.tags contains tag.tag %}
+                            {% assign counter = counter | plus: 1 %}
+                            {% endif %}
+                        {% endfor %}
+                        <a href="{{ tag.url }}#posts" role="button" class="btn btn-outline-secondary btn-tag">
+                            {{ tag.tag | replace: "-", " " }} ({{ counter }})
+                        </a>
+                        {% assign counter = 0 %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
             {{ content }}
             <div class="clearfix" style="margin-bottom: 20px">
                 <a class="btn btn-primary float-right" href="#">Back to Top</a>

@@ -13,7 +13,7 @@
         {% assign tags_sorted = post.tags | sort  %}
         {% for tag_name in tags_sorted %}
         {% assign tag = site.tags | where: 'tag', tag_name | first %}
-        <a href="{{ tag.url }}" role="button" class="btn btn-outline-secondary btn-tag">{{ tag.tag | replace: "-", " "}}</a>
+        <a href="{{ tag.url }}#posts" role="button" class="btn btn-outline-secondary btn-tag">{{ tag.tag | replace: "-", " "}}</a>
         {% endfor %}
     </div>
     {% endif %}

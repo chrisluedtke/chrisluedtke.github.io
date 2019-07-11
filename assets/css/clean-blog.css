@@ -105,7 +105,7 @@ img::-moz-selection {
   text-transform: uppercase;
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 768px) {
   #mainNav {
     border-bottom: 1px solid transparent;
     background: transparent;
@@ -126,7 +126,7 @@ img::-moz-selection {
   }
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 768px) {
   #mainNav {
     -webkit-transition: background-color 0.2s;
     -moz-transition: background-color 0.2s;
@@ -172,7 +172,7 @@ img::-moz-selection {
 }
 
 header.masthead {
-  margin-bottom: 50px;
+  margin-bottom: 5px;
   background: no-repeat center center;
   background-color: #868e96;
   background-attachment: scroll;
@@ -428,6 +428,20 @@ footer .copyright {
   color: #fff;
   background-color: #00657b !important;
   border-color: #00657b !important;
+}
+
+.btn-filt {
+  font-size: 12px;
+  padding: 5px 10px;
+  color: #868e96;
+  border: 0px;
+}
+
+.btn-filt:hover, .btn-filt:focus, .btn-filt:active, .btn-filt:active:focus{
+  color: #00657b;
+  background-color: #fff;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .btn-lg {
