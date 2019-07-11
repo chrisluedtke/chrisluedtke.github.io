@@ -1,9 +1,10 @@
 ---
-layout: post
-author: Chris Luedtke
 title: Busy-Beaver Release Announcement
 subtitle: Increasing Community Engagement with Python
 header_img: /assets/images/busy_beaver.jpg
+tags:
+- talks
+- application
 ---
 
 ## Building Open Source

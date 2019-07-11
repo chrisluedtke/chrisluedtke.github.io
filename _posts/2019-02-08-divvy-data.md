@@ -1,9 +1,11 @@
 ---
-layout: post
-author: Chris Luedtke
 title: The Ultimate Day of Chicago Bikeshare
 subtitle: Analysis of 17 million rides over 6 years
 header_img: /assets/images/divvy-data/cover.png
+tags:
+- gis
+- chicago
+- data-visualization
 ---
 
 Each day, Chicago's utilitarian design enables an incredible flow of people. Perhaps nothing bears this out better than the ridership of millions of bikes over several years. In this article, I analyze 17 million bikeshare rides and animate the most representative day of Chicago bikeshare. Skip ahead for the pretty pictures.
