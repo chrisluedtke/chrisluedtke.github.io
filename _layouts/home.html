@@ -1,14 +1,14 @@
 ---
 layout: default
 ---
-<header class="masthead" style="background-image: url('/assets/images/home-bg.jpg')">
+<header class="masthead" style="background-image: url('{{ site.header_img }}')">
    <div class="overlay"></div>
    <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="site-heading">
-                    <h1>Chris Luedtke</h1>
-                    <span class="subheading">Data Scientist for diverse problems and industries</span>
+                    <h1>{{ site.title }}</h1>
+                    <span class="subheading">{{ site.subtitle }}</span>
                 </div>
                 </a>
             </div>
@@ -45,7 +45,17 @@ layout: default
                     </div>
                 </div>
             </div>
-            {{ content }}
+            {% for post in site.posts %}
+                {% if page.tag %}
+                    {% for tag_name in post.tags %}
+                        {% if tag_name == page.tag %}
+                            {% include post_list.html %}
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    {% include post_list.html %}
+                {% endif %}
+            {% endfor %}
             <div class="clearfix" style="margin-bottom: 20px">
                 <a class="btn btn-primary float-right" href="#">Back to Top</a>
             </div>

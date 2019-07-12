@@ -6,62 +6,79 @@ tags:
 - gis
 - chicago
 - data-visualization
+- application
 ---
 
 Each day, Chicago's utilitarian design enables an incredible flow of people. Perhaps nothing bears this out better than the ridership of millions of bikes over several years. In this article, I analyze 17 million bikeshare rides and animate the most representative day of Chicago bikeshare. Skip ahead for the pretty pictures.
+
+To play with this data yourself, install my [`divvy-data` package from PyPI](https://pypi.org/project/divvy-data/).
 
 <h3 id="chicago-biking">Chicago Biking</h3>
 Bicycles are the best way to see a city, and yes, I am including Chicago's sometimes brutal winter months. Even as temperatures approached <a href="https://darksky.net/details/41.8756,-87.6244/2019-1-30/us12/en">-50&#xB0;F last week</a>, our bikeshare still <a href="https://twitter.com/DivvyBikes/status/1091398529975836673">received ridership</a>.
 
 Our blissfully flat terrain, lakefront paths, and bike infrastructure investments landed us Bicycling Magazine's <a href="https://www.bicycling.com/news/a20048181/the-50-best-bike-cities-of-2016/">most bike-friendly city in the country</a> (6th in <a href="https://www.bicycling.com/culture/a23676188/best-bike-cities-2018/">2018</a>). This past December, Chicago completed <a href="https://www.chicagoparkdistrict.com/parks-facilities/lakefront-trail">$12 million</a> and <a href="http://www.navypierflyover.com/">$60 million</a> projects to secure 18 continuous miles of dedicated lakefront bike path through the heart of Chicago.
 
-<h3 id="data-sourcing">Data Sourcing</h3>
-With mounting excitement for Chicago's cyclist future, I devoted my past week to a thorough shakedown of our bikeshare's <a href="https://www.divvybikes.com/system-data">public datasets</a>. You can find the code for this analysis on  <a href="https://github.com/chrisluedtke/divvy-data-analysis">GitHub</a>, including a <a href="https://nbviewer.jupyter.org/github/chrisluedtke/divvy-data-analysis/blob/master/notebook.ipynb">notebook</a> that steps through my process.
+### Data Sourcing and Python Package
+With mounting excitement for Chicago's cyclist future, I devoted my past week to a thorough shakedown of our bikeshare's [public datasets](https://www.divvybikes.com/system-data"). You can find the code for this analysis on [GitHub](https://github.com/chrisluedtke/divvy-data), including a [notebook](https://nbviewer.jupyter.org/github/chrisluedtke/divvy-data-analysis/blob/master/notebook.ipynb) that steps through my process.
 
-My first step was writing a <a href="https://github.com/chrisluedtke/divvy-data-analysis/tree/master/divvy">python package</a> to load the data neatly. Here's the result, pulling in ~2 GB of data:
-<script src="https://gist.github.com/chrisluedtke/588da34440196b146c364f47fc9bda7e.js"></script>
+My first step was writing a [python package](https://pypi.org/project/divvy-data/) to load the data neatly. Here's the result, pulling in ~2 GB of data:
 
-Divvy data come in <code>zip</code> files grouped by quarter. Columns and date formats are not standardized across files, so I manually wrote them into the loading process.
+```python
+import pandas as pd
 
-Most challenging, the ride tables don't include geographic coordinates for ride origin and destination. That information is tied to stations, which are contained in their own files. Divvy also didn't provide station information at all for 2018, so I integrated data from their <a href="https://feeds.divvybikes.com/stations/stations.json">live JSON station feed</a> to get the most recent locations.
+import divvy
 
-I also discovered stations had been physically moved while maintaining the same row-level ID. This greatly reduces the certainty of geographic analysis, as I can only be certain of a station's location at the end of the quarter on which the data were published. I calculated the geographic distance between these movements over time and dropped movements below a ~50 meter <a href="https://en.wikipedia.org/wiki/Decimal_degrees#Precision">precision level</a>.
+rides, stations = divvy.historical_data.get_data(
+  year=[str(_) for _ in range(2013,2019)],
+  rides=True,
+  stations=True
+)
+
+rides.to_pickle('data/rides.pkl')
+stations.to_pickle('data/stations.pkl')
+```
+
+Divvy data come in `zip` files grouped by quarter. Columns and date formats are not standardized across files, so I manually wrote them into the loading process.
+
+Most challenging, the ride tables don't include geographic coordinates for ride origin and destination. That information is tied to stations, which are contained in their own files. Divvy also didn't provide station information at all for 2018, so I integrated data from their [live JSON station feed](https://feeds.divvybikes.com/stations/stations.json) to get the most recent locations.
+
+I also discovered stations had been physically moved while maintaining the same row-level ID. This greatly reduces the certainty of geographic analysis, as I can only be certain of a station's location at the end of the quarter on which the data were published. I calculated the geographic distance between these movements over time and dropped movements below a ~50 meter [precision level](https://en.wikipedia.org/wiki/Decimal_degrees#Precision).
 
 A representative station:
 
-<table border="0", style="font-family: monospace;width: 100%;text-align: right;border-collapse: collapse">
-<thead style="border-bottom: 1px solid black">
-    <tr>
-    <th>id</th>
-    <th>latitude</th>
-    <th>longitude</th>
-    <th>online_date</th>
-    <th>source</th>
-    </tr>
-</thead>
-<tbody style="border-bottom: 1px solid black">
-    <tr>
-    <td>2</td>
-    <td>41.872293</td>
-    <td>-87.624091</td>
-    <td>NaT</td>
-    <td>2015</td>
-    </tr>
-    <tr>
-    <td>2</td>
-    <td>41.881060</td>
-    <td>-87.619486</td>
-    <td>2013-06-10 10:43:46</td>
-    <td>2017_Q1Q2</td>
-    </tr>
-    <tr>
-    <td>2</td>
-    <td>41.876393</td>
-    <td>-87.620328</td>
-    <td>2013-06-10 10:43:00</td>
-    <td>2017_Q3Q4</td>
-    </tr>
-</tbody>
+<table style="border: 0px; font-family: monospace; width: 100%; text-align: right; border-collapse: collapse">
+    <thead style="border-bottom: 1px solid black">
+        <tr>
+        <th>id</th>
+        <th>latitude</th>
+        <th>longitude</th>
+        <th>online_date</th>
+        <th>source</th>
+        </tr>
+    </thead>
+    <tbody style="border-bottom: 1px solid black">
+        <tr>
+        <td>2</td>
+        <td>41.872293</td>
+        <td>-87.624091</td>
+        <td>NaT</td>
+        <td>2015</td>
+        </tr>
+        <tr>
+        <td>2</td>
+        <td>41.881060</td>
+        <td>-87.619486</td>
+        <td>2013-06-10 10:43:46</td>
+        <td>2017_Q1Q2</td>
+        </tr>
+        <tr>
+        <td>2</td>
+        <td>41.876393</td>
+        <td>-87.620328</td>
+        <td>2013-06-10 10:43:00</td>
+        <td>2017_Q3Q4</td>
+        </tr>
+    </tbody>
 </table>
 
 All duplicate stations and their movements:
@@ -94,7 +111,7 @@ Here's the result. Best viewed at 4K resolution, and right-click to loop. Each d
 
 <iframe width="100%" height="405" src="https://www.youtube.com/embed/SVueGQPpz14?modestbranding=1&loop=1&rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Finally, here are two interactive frames from the animation. Click or tap the circles for more detail. Let me know what you discover. (<a href="https://chrisluedtke.github.io/img/divvy-data/am_v_pm.html">full screen here</a>)
+Finally, here are two interactive frames from the animation. Click or tap the circles for more detail. Let me know what you discover. (<a href="/assets/images/divvy-data/am_v_pm.html">full screen here</a>)
 
 <table style="width:100%; text-align:center">
 <tr>

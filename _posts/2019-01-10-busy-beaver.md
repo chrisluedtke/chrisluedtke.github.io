@@ -5,6 +5,7 @@ header_img: /assets/images/busy_beaver.jpg
 tags:
 - talks
 - application
+- chipy
 ---
 
 ## Building Open Source

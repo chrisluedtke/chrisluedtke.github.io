@@ -11,14 +11,14 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="title" content= "{{ page.title }}">
-    <meta name="description" content="Data Scientist for diverse problems and industries">
-    <meta name="author" content="Chris Luedtke">
-    <meta property="og:title" content="{{ page.title }}"/>
+    <meta name="title" content= "{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+    <meta name="description" content="{% if page.subtitle %}{{ page.subtitle }}{% else %}{{ site.subtitle }}{% endif %}">
+    <meta name="author" content="{{ site.author }}">
+    <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}"/>
     <meta property="og:type" content="blog"/>
-    <meta property="og:description" content="Data Scientist for diverse problems and industries"/>
-    <meta property="og:image" content=""/>
-    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    <meta property="og:description" content="{% if page.subtitle %}{{ page.subtitle }}{% else %}{{ site.subtitle }}{% endif %}"/>
+    <meta property="og:image" content="{% if page.header_img %}{{ page.header_img }}{% else %}{{ site.header_img }}{% endif %}"/>
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico"> -->
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -36,5 +36,5 @@
     <link href="/assets/css/syntax.css" rel="stylesheet">
     <script src="/assets/js/clean-blog.min.js"></script>
 
-    <title>{{ page.title }}</title>
+    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
 </head>
