@@ -13,7 +13,7 @@ To develop and preview my website locally, I followed the [WSL Jekyll installati
     gem update
     gem install jekyll bundler
     ```
-3. If you receive an error at `gem update` or `gem install jekyll bundler`, add the following lines to `.bashrc` and try those commands again. See: [Running Jekyll as Non-Superuser (no sudo!)](https://jekyllrb.com/docs/troubleshooting/#no-sudo).
+3. If you receive an error at `gem update` or `gem install jekyll bundler`, locate `.bashrc` at `C:\Users\USERNAME\AppData\Local\Packages\{DIST}\LocalState\rootfs\home\{LINUXUSER}\`. Add the following lines to `.bashrc` and try those commands again. See: [Running Jekyll as Non-Superuser (no sudo!)](https://jekyllrb.com/docs/troubleshooting/#no-sudo).
     ```
     # Ruby exports
 
