@@ -3,7 +3,7 @@ body {
   color: #212529;
   font-family: 'Lora', 'Times New Roman', serif;
 }
-  
+
 p {
   line-height: 1.5;
   margin: 30px 0;
@@ -78,97 +78,61 @@ img::-moz-selection {
   background: transparent;
 }
 
-#mainNav {
-  position: absolute;
-  border-bottom: 1px solid #e9ecef;
-  background-color: white;
+/* Navbar */
+.navbar {
+  /* position: absolute; */
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+  transition: padding 0.3s ease;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-#mainNav .navbar-brand {
-  font-weight: 800;
-  color: #343a40;
+.navbar-solid {
+  background-color: rgba(0, 0, 0, 0.85);
+  transition: background-color 0.3s ease;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  transition: padding 0.3s ease;
 }
 
-#mainNav .navbar-toggler {
-  font-size: 12px;
-  font-weight: 800;
-  padding: 13px;
+.navbar-brand {
+  font-weight: 650;
+  color: rgba(255, 255, 255, 100);
+  opacity: 0;
+}
+
+.navbar-brand:focus, .navbar-brand:hover {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-solid .navbar-brand{
+  opacity: 1;
+}
+
+.navbar-toggler {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 600;
+  padding: 4px;
   text-transform: uppercase;
-  color: #343a40;
+  border: 0px;
 }
 
-#mainNav .navbar-nav > li.nav-item > a {
+.navbar-toggler:active {
+  border-width: 0px;
+}
+
+.navbar-nav .nav-link {
+  color: #ffffff;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 1px;
   text-transform: uppercase;
+  padding-left: 1.25rem;
 }
 
-@media only screen and (min-width: 768px) {
-  #mainNav {
-    border-bottom: 1px solid transparent;
-    background: transparent;
-  }
-  #mainNav .navbar-brand {
-    padding: 10px 20px;
-    color: #fff;
-  }
-  #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
-    color: rgba(255, 255, 255, 0.8);
-  }
-  #mainNav .navbar-nav > li.nav-item > a {
-    padding: 10px 20px;
-    color: #fff;
-  }
-  #mainNav .navbar-nav > li.nav-item > a:focus, #mainNav .navbar-nav > li.nav-item > a:hover {
-    color: rgba(255, 255, 255, 0.8);
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  #mainNav {
-    -webkit-transition: background-color 0.2s;
-    -moz-transition: background-color 0.2s;
-    transition: background-color 0.2s;
-    /* Force Hardware Acceleration in WebKit */
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    -ms-transform: translate3d(0, 0, 0);
-    -o-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    -webkit-backface-visibility: hidden;
-  }
-  #mainNav.is-fixed {
-    /* when the user scrolls down, we hide the header right above the viewport */
-    position: fixed;
-    top: -67px;
-    -webkit-transition: -webkit-transform 0.2s;
-    -moz-transition: -moz-transform 0.2s;
-    transition: transform 0.2s;
-    border-bottom: 1px solid white;
-    background-color: rgba(255, 255, 255, 0.9);
-  }
-  #mainNav.is-fixed .navbar-brand {
-    color: #212529;
-  }
-  #mainNav.is-fixed .navbar-brand:focus, #mainNav.is-fixed .navbar-brand:hover {
-    color: #0085A1;
-  }
-  #mainNav.is-fixed .navbar-nav > li.nav-item > a {
-    color: #212529;
-  }
-  #mainNav.is-fixed .navbar-nav > li.nav-item > a:focus, #mainNav.is-fixed .navbar-nav > li.nav-item > a:hover {
-    color: #0085A1;
-  }
-  #mainNav.is-visible {
-    /* if the user changes the scrolling direction, we show the header */
-    -webkit-transform: translate3d(0, 100%, 0);
-    -moz-transform: translate3d(0, 100%, 0);
-    -ms-transform: translate3d(0, 100%, 0);
-    -o-transform: translate3d(0, 100%, 0);
-    transform: translate3d(0, 100%, 0);
-  }
+.navbar-nav .nav-link:hover {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 header.masthead {
@@ -222,7 +186,7 @@ header.masthead .site-heading h1 {
 header.masthead .page-heading .subheading,
 header.masthead .site-heading .subheading {
   font-size: 24px;
-  font-weight: 300;
+  font-weight: 350;
   line-height: 1.1;
   display: block;
   margin: 10px 0 0;

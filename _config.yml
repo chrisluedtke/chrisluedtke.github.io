@@ -1,19 +1,20 @@
 markdown: kramdown
 highlighter: rouge
 title: "Chris Luedtke"
-subtitle: "Data Scientist for diverse problems and industries"
-header_img: "/assets/images/home-bg.jpg"
+subtitle: "Data Scientist · Civic Technologist · Creative"
 author: "Chris Luedtke"
 collections:
   tags:
     output: true
+  portfolio:
 defaults:
   - scope:
       path: ""
       type: "tags"
     values:
-      layout: "home"
+      layout: "blog"
       title: "Chris Luedtke"
+      header_img: "/assets/images/home-bg.jpg"
   - scope:
       path: ""
       type: "posts"
@@ -23,3 +24,4 @@ defaults:
       path: ""
     values:
       layout: "default"
+      header_img: "/assets/images/home-bg-2.jpg"

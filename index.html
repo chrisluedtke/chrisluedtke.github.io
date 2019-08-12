@@ -1,3 +1,53 @@
 ---
-layout: home
+layout: default
 ---
+{% include banner.html %}
+<div class="container">
+    <div class="row justify-content-center">
+        <h1 style="margin-bottom: 3rem">About</h1>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-3 col-md-4">
+            <img src="https://pbs.twimg.com/profile_images/1094050380621758464/WkuAatTV_400x400.jpg" class="img-fluid mx-auto d-block" style="max-height: 240px; border-radius: 50%; margin-bottom: 2rem;">
+        </div>
+        <div class="col-md-8">
+            <p style="margin-top: 0px">I build tools and systems to help mission-driven organizations solve operational and informatics problems. My favorite tasks involve advanced machine learning models, beautiful interfaces, creative thinking, and smooth data pipelines. I am experienced in natual language processing, computer vision, and geographic information systems.</p>
+            <p>As an avid learner and teacher, I can frequently be found contributing to Chicago's Python and civic tech communities.</p>
+        </div>
+    </div>
+</div>
+<div style="background: rgb(136, 150, 172); padding-top: 2rem;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <h2 style="margin-bottom: 3rem">Portfolio</h2>
+        </div>
+    </div>
+    <div class="container">
+    {% assign portfolio = site.portfolio | sort: "path", "last" | reverse %}
+    {% for post in portfolio %}
+        <div class="row">
+            <div class="col-md-7">
+                <img class="img-fluid rounded mb-3 mb-md-0" src="{{ post.header_img }}" alt="" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+            </div>
+            <div class="col-md-5">
+                <h3>{{ post.title }}</h3>
+                {{ post.content | markdownify }}
+                {% if post.live_link %}
+                <a class="btn btn-primary" href="{{ post.live_link }}"><i class="fa fa-play-circle"></i> View App</a>
+                {% endif %}
+                {% if post.github_link %}
+                <a class="btn btn-primary" href="{{ post.github_link }}"><i class="fa fa-github"></i> View Code</a>
+                {% endif %}
+                {% if post.blog_link %}
+                {% assign apost = site.posts | where:"path", post.blog_link | first %}
+                <a class="btn btn-primary" href="{{apost.url}}"><i class="fa fa-file-text"></i> Read More</a>
+                {% endif %}
+                {% if post.link %}
+                <a class="btn btn-primary" href="{{ post.link }}"><i class="fa fa-file-text"></i> Read More</a>
+                {% endif %}
+            </div>
+      </div>
+      <hr>
+      {% endfor %}
+    </div>
+</div>

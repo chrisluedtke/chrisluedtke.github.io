@@ -1,10 +1,21 @@
-- name: Home
+- name: Portfolio
   link: /
-- name: GitHub
-  link: https://github.com/chrisluedtke
-- name: Twitter
-  link: https://twitter.com/LuedaChris
-- name: LinkedIn
-  link: https://www.linkedin.com/in/c-luedtke/l
-- name: Contact
-  link: mailto:chrisluedtke@gmail.com
+  icon: fa fa-book
+- name: Blog
+  link: /blog
+  icon: fa fa-file-text
+- name: Connect
+  icon: fa fa-users
+  dropdown:
+  - name: GitHub
+    link: https://github.com/chrisluedtke
+    icon: fa fa-github
+  - name: Twitter
+    link: https://twitter.com/LuedaChris
+    icon: fa fa-twitter
+  - name: LinkedIn
+    link: https://www.linkedin.com/in/c-luedtke/l
+    icon: fa fa-linkedin
+  - name: Email
+    link: mailto:chrisluedtke@gmail.com
+    icon: fa fa-envelope
