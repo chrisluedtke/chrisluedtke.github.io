@@ -17,7 +17,7 @@
     <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}"/>
     <meta property="og:type" content="blog"/>
     <meta property="og:description" content="{% if page.subtitle %}{{ page.subtitle }}{% else %}{{ site.subtitle }}{% endif %}"/>
-    <meta property="og:image" content="{% if page.header_img %}{{ page.header_img }}{% else %}{{ site.header_img }}{% endif %}"/>
+    <meta property="og:image" content="{{ page.header_img }}"/>
     <!-- <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico"> -->
 
     <!-- Bootstrap -->
