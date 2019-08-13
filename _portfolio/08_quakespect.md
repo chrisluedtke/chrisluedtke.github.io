@@ -5,4 +5,4 @@ live_link: http://quakespect.com
 github_link: https://github.com/labs13-quake-viewer
 ---
 
-QuakeSpect is an overview of earthquake events, prediciton and impact. I built a live-streaming data visualization platform around USGS and implemented a baseline predictive model of future events.
+QuakeSpect is an overview of earthquake events, prediciton and impact. I built a live-streaming data visualization platform around USGS and implemented a baseline [predictive model](http://www.quakespect.com/predictions) of future events.
