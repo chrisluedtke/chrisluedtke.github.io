@@ -1,9 +1,9 @@
 ---
-title: Algorithms Interest Group
+title: Algorithms Meetup Group
 header_img: /assets/images/algosig.jpg
-link: http://127.0.0.1:4000/tags/chipy-algosig.html#posts
+link: https://chicagopython.github.io/algosig/
 ---
 
-As an organizer for the [Chicago Python Users Group](https://www.chipy.org/), I co-facilitate our Algorithms Special Interest Group. Participants select 1 of 3 code challenges and spend the evening honing their problem solving skills. 
+I co-founded and facilitate a monthly Algorithms & Data Structures meetup on behalf of [Chicago Python Users Group](https://www.chipy.org/). Participants select 1 of 3 code challenges and spend the evening honing their problem solving skills. 
 
 [Join us](https://www.meetup.com/_ChiPy_/) every first Thursday of the month!
