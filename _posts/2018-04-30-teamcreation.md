@@ -20,7 +20,7 @@ In this post, we go over how we implemented our solution to this problem so that
 * [Researching Our Approach](#researching-our-approach)
 * [Walkthrough of Simulated Annealing](#walkthrough-of-simulated-annealing)
 * [Scheduling the Annealing Process](#scheduling-the-annealing-process)
-* [Defining 'Good' Placements](#defining-'good'-placements)
+* [Defining 'Good' Placements](#defining-good-placements)
 * [Results](#results)
 * [Scaling the Solution](#scaling-the-solution)
 
@@ -126,15 +126,13 @@ We solved this by writing firm constraints such that certain placements would ne
 
 Implementing this solution has yielded several benefits. For one, we drastically cut the time commitment necessary from our staff. Completing all placements by hand required thousands of worker hours across the national network. Last year, approximately 350 program managers spent 4 to 8 hours each to complete placements, totaling 1,400 to 2,800 hours. Second, our approach removes unconscious bias from the process. When managers chose their own teammates, it invited "like-me" biases and other forms of unconscious bias, causing team demographics to deviate from the mean.
 
-In Chicago, perhaps the greatest benefit of our approach was improved commute times. Commute had never been formally considered in Chicago, which lead to enormous inefficiency in placements. In the 2017 school year, the average ACM was placed at the 13th closest school to their home address. With 26 school partners that year, commute efficiency was only as good as random placement.
+In Chicago, the greatest benefit of our approach was improved commute times.  Commutes had never been formally considered in Chicago, which lead to enormous inefficiencies. In the 2017 school year, the average ACM was placed at the 13th closest school to home, a performance that was no better than random placement. Since ACMs already work 10 hours per day in City Year, any commute improvements are tremendously appreciated.
 
-However, using our method we made dramatic improvements. Fewer than 10% of the ACMs we placed in 2018 commute 60 minutes or more. In 2017, that number was 30%.
+Using our improved method, only **10%** of the ACMs we placed will commute 60 minutes or more. In 2017, that number was 30%. Each school day, Chicago's ACMs will commute **114 hours less** than in 2017. Over the entire school year, the average ACM will commute **90 hours less** than in 2017. Assuming an hourly rate of $10 per hour, the net time savings is more than **$19,000** in Chicago alone. With similar gains in city locations nation-wide, the savings would be **$250,000**.
 
 Below are the one-way commute time distributions in 2018 (orange) and 2017 (blue):
 
 <div><img class="img-fluid" src="/assets/images/teamplacement/chi_sy18vsy17.png" title="Chicago Commutes 2017 vs 2018"></div>
-
-For each school day in 2018, Chicago's ACMs commute 114 hours less than in 2017. Over the course of the 2018 school year (150 in-school days), the average ACM commutes 90 hours less than in 2017. ACMs already work 10 hours per day in our program, so this improvement is tremendously welcome from their perspective.
 
 ### Scaling the Solution
 
