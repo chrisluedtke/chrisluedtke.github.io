@@ -14,15 +14,15 @@ This type of problem falls into the general umbrella of combinatorial optimizati
 
 In this post, we go over how we implemented our solution to this problem so that others might adapt it to their own use case. This post was a collaborative effort with [Alex Perusse](https://github.com/mrklees).
 
-#### Contents
+**Contents**
 
-* [Defining the Business Need](#Defining-the-Business-Need)
-* [Researching Our Approach](#Researching-Our-Approach)
-* [Walkthrough of Simulated Annealing](#Walkthrough-of-Simulated-Annealing)
-* [Scheduling the Annealing Process](#Scheduling-the-Annealing-Process)
-* [Defining 'Good' Placements](#Defining-'Good'-Placements)
-* [Results](#Results)
-* [Scaling the Solution](#Scaling-the-Solution)
+* [Defining the Business Need](#defining-the-business-need)
+* [Researching Our Approach](#researching-our-approach)
+* [Walkthrough of Simulated Annealing](#walkthrough-of-simulated-annealing)
+* [Scheduling the Annealing Process](#scheduling-the-annealing-process)
+* [Defining 'Good' Placements](#defining-'good'-placements)
+* [Results](#results)
+* [Scaling the Solution](#scaling-the-solution)
 
 ### Defining the Business Need
 
@@ -142,9 +142,9 @@ Developing in R improved both the efficiency and efficacy of our placement metho
 
 To serve this many users, we needed our solution to be user friendly and easily accessible. Initially, we accomplished this with the Power BI platform to run our algorithm through R and visualize results. This was a surprisingly simple deployment that only required users to install Power BI, install R, and point the Power BI dashboard to their survey result files. But there were several important limitations:
 
-1) Power BI prevents R scripts from running over 30 minutes.
-2) Power BI's convoluted query schedule triggered the R script to [run twice at upon initialization](https://community.powerbi.com/t5/Desktop/Query-Containing-R-Script-Algorithm-is-Evaluated-Twice-on/m-p/394475#M179946).
-3) Users must use the resources on their local machine.
+1. Power BI prevents R scripts from running over 30 minutes.
+2. Power BI's convoluted query schedule triggered the R script to [run twice at upon initialization](https://community.powerbi.com/t5/Desktop/Query-Containing-R-Script-Algorithm-is-Evaluated-Twice-on/m-p/394475#M179946).
+3. Users must use the resources on their local machine.
 
 Our ultimate solution was to write a dedicated web application written in Python's Django framework. This application guided users through data cleaning and provided several customization options to tailor results to users' specific city and school needs. We compiled this app into a Docker container and deployed on Azure. Here's how it turned out:
 
@@ -152,9 +152,9 @@ Our ultimate solution was to write a dedicated web application written in Python
 
 With this solution, we maintained all the advantages of Power BI's interactive dashboarding features while circumventing its limitations. The placement results were returned to the user in a ZIP file containing a Power BI dashboard and some CSVs. Here are some sample results as static images:
 
-<div><img class="img-fluid" src="/assets/images/teamplacement/dashboard_main.png" title="Main Sheet"></div>
-
-<div><img class="img-fluid" src="/assets/images/teamplacement/dashboard_commutes.png" title="Commutes Sheet"></div>
+<div><a href="/assets/images/teamplacement/dashboard_main.png"><img class="img-fluid" src="/assets/images/teamplacement/dashboard_main.png" title="Main Sheet - click to expand"></a></div>
+<br>
+<div><a href="/assets/images/teamplacement/dashboard_commutes.png"><img class="img-fluid" src="/assets/images/teamplacement/dashboard_commutes.png" title="Commutes Sheet - click to expand"></a></div>
 
 Thanks for reading! If you have any further questions, please see our [GitHub repository](https://github.com/chrisluedtke/ACM-School-Placement) or reach out via my "connect" details in the page menu.
 
