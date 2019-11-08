@@ -12,7 +12,17 @@ How do you distribute a large pool of people into a fixed number of teams which 
 
 This type of problem falls into the general umbrella of combinatorial optimization, where the goal is finding the best combination from a large pool of possibilities. For example, for a site of 80 AmeriCorps Members (ACMs) split into 8 equally sized teams, there are 5.9 x 10^61 possible combinations (for comparison, there are 8.1 x 10^67 ways to shuffle a deck of cards, which is regarded as practically infinite).
 
-In this post, we go over how we implemented our solution to this problem so that others might adapt it to their own use case. This post was a collaborative effort with Alex Perusse <a href="https://mrklees.github.io/">(blog)</a>.
+In this post, we go over how we implemented our solution to this problem so that others might adapt it to their own use case. This post was a collaborative effort with [Alex Perusse](https://github.com/mrklees).
+
+#### Contents
+
+* [Defining the Business Need](#Defining-the-Business-Need)
+* [Researching Our Approach](#Researching-Our-Approach)
+* [Walkthrough of Simulated Annealing](#Walkthrough-of-Simulated-Annealing)
+* [Scheduling the Annealing Process](#Scheduling-the-Annealing-Process)
+* [Defining 'Good' Placements](#Defining-'Good'-Placements)
+* [Results](#Results)
+* [Scaling the Solution](#Scaling-the-Solution)
 
 ### Defining the Business Need
 
@@ -126,14 +136,26 @@ Below are the one-way commute time distributions in 2018 (orange) and 2017 (blue
 
 For each school day in 2018, Chicago's ACMs commute 114 hours less than in 2017. Over the course of the 2018 school year (150 in-school days), the average ACM commutes 90 hours less than in 2017. ACMs already work 10 hours per day in our program, so this improvement is tremendously welcome from their perspective.
 
-### Scaling the Solution*
+### Scaling the Solution
 
-Developing in R improved both the efficiency and efficacy of the method in addition to streamlining the process for non-technical folks. While the original Excel-based application ('CY Jam') had only been used in Los Angeles and a few other sites, our re-worked method is scheduled for use in 13. This is largely due to the application's improved usability.
+Developing in R improved both the efficiency and efficacy of our placement method by eliminating a majority of human effort and bias. While the original Excel-based application ('CY Jam') had only been used in Los Angeles and a few other sites, our re-worked method has been used in more than half of City Year's 26 city locations.
 
-With the algorithm implemented in R, we developed a user-friendly Power BI platform to run it and visualize results. This was a surprisingly simple deployment, but it had several important limitations. For one, Power BI prevents R scripts from running over 30 minutes. For another, Power BI's convoluted query schedule triggers the R script to <a href="https://community.powerbi.com/t5/Desktop/Query-Containing-R-Script-Algorithm-is-Evaluated-Twice-on/m-p/394475#M179946">run twice at the same time</a>. On top of these issues, the user was responsible for installing and configuring R and all dependencies.
+To serve this many users, we needed our solution to be user friendly and easily accessible. Initially, we accomplished this with the Power BI platform to run our algorithm through R and visualize results. This was a surprisingly simple deployment that only required users to install Power BI, install R, and point the Power BI dashboard to their survey result files. But there were several important limitations:
 
-Ultimately, we scrapped Power BI in favor of a dedicated web app written in the Python django framework. We packaged the app into a Docker container and deployed on Azure. Here's a peek:
+1) Power BI prevents R scripts from running over 30 minutes.
+2) Power BI's convoluted query schedule triggered the R script to [run twice at upon initialization](https://community.powerbi.com/t5/Desktop/Query-Containing-R-Script-Algorithm-is-Evaluated-Twice-on/m-p/394475#M179946).
+3) Users must use the resources on their local machine.
+
+Our ultimate solution was to write a dedicated web application written in Python's Django framework. This application guided users through data cleaning and provided several customization options to tailor results to users' specific city and school needs. We compiled this app into a Docker container and deployed on Azure. Here's how it turned out:
 
 <div><img class="img-fluid" src="/assets/images/teamplacement/placement_app.gif" title="Placement App Demo"></div>
 
-<i><small>* Updated 06/14 with webapp preview</small></i>
+With this solution, we maintained all the advantages of Power BI's interactive dashboarding features while circumventing its limitations. The placement results were returned to the user in a ZIP file containing a Power BI dashboard and some CSVs. Here are some sample results as static images:
+
+<div><img class="img-fluid" src="/assets/images/teamplacement/dashboard_main.png" title="Main Sheet"></div>
+
+<div><img class="img-fluid" src="/assets/images/teamplacement/dashboard_commutes.png" title="Commutes Sheet"></div>
+
+Thanks for reading! If you have any further questions, please see our [GitHub repository](https://github.com/chrisluedtke/ACM-School-Placement) or reach out via my "connect" details in the page menu.
+
+<i><small>* Updates: 6/14/2019 webapp preview; 11/8/2019 writing edits and dashboard images</small></i>
