@@ -1,6 +1,6 @@
 ## Development
 
-This site is designed for [GitHub Pages](https://pages.github.com/), which is built with [Jekyll](https://jekyllrb.com/), a [Ruby Gem](https://jekyllrb.com/docs/ruby-101/#gems). No local setup is required. Simply create a [markdown file](https://guides.github.com/features/mastering-markdown/) in `./_posts/`, and that document will be rendered on the hosted website. See [Jekyll's documentation on Posts](https://jekyllrb.com/docs/posts/).
+This site is designed for [GitHub Pages](https://pages.github.com/), which is built with [Jekyll](https://jekyllrb.com/), a [Ruby Gem](https://jekyllrb.com/docs/ruby-101/#gems). *No local setup is required*. Simply create a [markdown file](https://guides.github.com/features/mastering-markdown/) in `./_posts/`, and that document will be rendered on the hosted website. See [Jekyll's documentation on Posts](https://jekyllrb.com/docs/posts/).
 
 ## Local Development
 
@@ -16,7 +16,7 @@ Follow the [appropriate guide for your system](https://jekyllrb.com/docs/install
 2. Followed the [WSL Jekyll installation guide](https://jekyllrb.com/docs/installation/windows/#installation-via-bash-on-windows-10)
 3. If you receive a permission error at `gem update` or `gem install jekyll bundler`, locate `.bashrc`:
     ```bash
-    nano C:\Users\USERNAME\AppData\Local\Packages\{DIST}\LocalState\rootfs\home\{LINUXUSER}\.bashrc
+    nano C:\Users\{WINDOWS_USER}\AppData\Local\Packages\{UBUNTU_DIST}\LocalState\rootfs\home\{UBUNTU_USER}\.bashrc
     ```
     *Alternatively:*
     ```bash
@@ -42,17 +42,20 @@ Follow the [appropriate guide for your system](https://jekyllrb.com/docs/install
     sudo apt-get install libpng-dev
     sudo apt-get install --reinstall zlibc zlib1g zlib1g-dev
     ```
-2. Install dependencies as specified in this repo's `GemFile` file
+2. Install dependencies specified in this repo's [`GemFile`](GemFile)
     ```
     bundle install
     ```
-3. (Optional) get syntax styling `.css`
-    ```
-    rougify style github > assets/css/syntax.css  
-    ```
-4. Boot the local server
+3. Boot the local server
     ```
     bundle exec jekyll serve
+    ```
+
+### Miscellaneous
+
+* Syntax styling/highlighting for code blocks was configured via:
+    ```
+    rougify style github > assets/css/syntax.css  
     ```
 
 ## Theme Credits
