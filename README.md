@@ -14,25 +14,26 @@ Follow the [appropriate guide for your system](https://jekyllrb.com/docs/install
 
 1. [Install WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10) and Ubuntu from the Microsoft Store
 2. Followed the [WSL Jekyll installation guide](https://jekyllrb.com/docs/installation/windows/#installation-via-bash-on-windows-10)
-3. If you receive a permission error at `gem update` or `gem install jekyll bundler`, locate `.bashrc`:
-    ```bash
-    nano C:\Users\{WINDOWS_USER}\AppData\Local\Packages\{UBUNTU_DIST}\LocalState\rootfs\home\{UBUNTU_USER}\.bashrc
-    ```
-    *Alternatively:*
+3. If you receive a permission error at `gem update` or `gem install jekyll bundler`, modify your `.bashrc`:
     ```bash
     nano ~/.bashrc
     ```
-    Add the following lines (see: [Running Jekyll as Non-Superuser (no sudo!)](https://jekyllrb.com/docs/troubleshooting/#no-sudo)
+
+    `.bashrc` is located at `C:\Users\{USER}\AppData\Local\Packages\{UBUNTU_DIST}\LocalState\rootfs\home\{UBUNTU_USER}\.bashrc`
+
+    Add the following lines (see: [Running Jekyll as Non-Superuser (no sudo!)](https://jekyllrb.com/docs/troubleshooting/#no-sudo):
     ```
     # Ruby exports
 
     export GEM_HOME=$HOME/gems
     export PATH=$HOME/gems/bin:$PATH
     ```
-    Restart the terminal, or reload `.bashrc`
+
+    Restart the terminal, or reload `.bashrc`:
     ```bash
     . ~/.bashrc
     ```
+
     Resume the [WSL Jekyll installation guide](https://jekyllrb.com/docs/installation/windows/#installation-via-bash-on-windows-10).
 
 ### Local GitHub Pages Setup
