@@ -14,7 +14,7 @@ defaults:
     values:
       layout: "blog"
       title: "Chris Luedtke"
-      header_img: "/assets/images/home-bg.jpg"
+      header_img: "/assets/images/blog-bg.jpg"
   - scope:
       path: ""
       type: "posts"
@@ -24,4 +24,4 @@ defaults:
       path: ""
     values:
       layout: "default"
-      header_img: "/assets/images/home-bg-2.jpg"
+      header_img: "/assets/images/home-bg.jpg"

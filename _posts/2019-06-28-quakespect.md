@@ -1,5 +1,5 @@
 ---
-title: QuakeSpect.com
+title: "Demo: QuakeSpect.com"
 subtitle: A web application to explore earthquake events, prediction, and impact
 forward_url: http://www.quakespect.com/
 tags:

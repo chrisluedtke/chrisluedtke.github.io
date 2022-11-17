@@ -2,6 +2,7 @@
 title: How to Embed Python Code from a Jupyter Notebook
 subtitle: The super easy way
 header_img: /assets/images/post-bg.jpg
+published: false
 ---
 
 ## Let's not get too technical
